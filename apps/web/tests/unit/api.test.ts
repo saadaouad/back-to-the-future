@@ -16,7 +16,7 @@ describe('api', () => {
     vi.stubGlobal('fetch', fetchMock);
 
     await expect(api<{ total: number }>('/cart/calculate')).resolves.toEqual({ total: 36 });
-    expect(fetchMock).toHaveBeenCalledWith('http://localhost:3001/cart/calculate', {
+    expect(fetchMock).toHaveBeenCalledWith('http://localhost:3001/api/cart/calculate', {
       headers: { Accept: 'application/json' }
     });
   });

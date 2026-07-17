@@ -10,7 +10,7 @@ import { DatabaseService } from '@/db/database.service';
 
 import { cleanupDatabase, seedFilms } from '../helpers/dbHelpers';
 
-describe('POST /cart/calculate', () => {
+describe('POST /api/cart/calculate', () => {
   let app: INestApplication;
   let database: DatabaseService;
 
@@ -20,6 +20,7 @@ describe('POST /cart/calculate', () => {
     }).compile();
 
     app = moduleRef.createNestApplication();
+    app.setGlobalPrefix('api', { exclude: ['health'] });
     await app.init();
 
     database = app.get(DatabaseService);
@@ -37,7 +38,7 @@ describe('POST /cart/calculate', () => {
 
   it('returns the order total for a mixed cart', async () => {
     const response = await request(app.getHttpServer())
-      .post('/cart/calculate')
+      .post('/api/cart/calculate')
       .send({
         cart: `Back to the Future 1
 Back to the Future 2
@@ -54,6 +55,6 @@ La chèvre`
   });
 
   it('rejects an empty cart', async () => {
-    await request(app.getHttpServer()).post('/cart/calculate').send({ cart: '' }).expect(400);
+    await request(app.getHttpServer()).post('/api/cart/calculate').send({ cart: '' }).expect(400);
   });
 });

@@ -46,7 +46,7 @@ La chèvre`;
 
     expect(screen.getByTestId('cart-discount')).toHaveTextContent('Remise saga 20');
     expect(fetchMock).toHaveBeenCalledWith(
-      expect.stringContaining('/cart/calculate'),
+      expect.stringContaining('/api/cart/calculate'),
       expect.objectContaining({
         method: 'POST',
         body: JSON.stringify({ cart })

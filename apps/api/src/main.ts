@@ -9,6 +9,7 @@ async function bootstrap() {
   assertEnv();
 
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('api', { exclude: ['health'] });
   app.enableCors({
     origin: env.CORS_ORIGIN,
     methods: ['GET', 'POST', 'OPTIONS']

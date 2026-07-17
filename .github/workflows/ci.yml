@@ -28,7 +28,7 @@ jobs:
       APP_STAGE: test
       NODE_ENV: test
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/bttf_test
-      VITE_API_URL: http://localhost:3001
+      VITE_API_URL: http://localhost:3001/api
       PORT: 3001
       CORS_ORIGIN: http://localhost:5173
 

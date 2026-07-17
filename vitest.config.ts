@@ -45,7 +45,7 @@ export default defineConfig({
           include: ['apps/web/tests/unit/*.test.ts'],
           environment: 'jsdom',
           env: {
-            VITE_API_URL: 'http://localhost:3001'
+            VITE_API_URL: 'http://localhost:3001/api'
           }
         }
       },
@@ -61,7 +61,7 @@ export default defineConfig({
           setupFiles: ['apps/web/tests/setup.ts'],
           environment: 'jsdom',
           env: {
-            VITE_API_URL: 'http://localhost:3001'
+            VITE_API_URL: 'http://localhost:3001/api'
           }
         }
       }
