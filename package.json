@@ -1,0 +1,32 @@
+{
+  "name": "back-to-the-future",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "build:api": "turbo run build --filter=api",
+    "build:web": "turbo run build --filter=web",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "format": "turbo run format",
+    "format:fix": "turbo run format:fix",
+    "test:unit": "turbo run test:unit",
+    "test:integration": "turbo run test:integration",
+    "check-types": "turbo run check-types"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.4",
+    "@vitejs/plugin-react": "^4.7.0",
+    "turbo": "^2.9.8",
+    "typescript": "5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": "24.x"
+  },
+  "packageManager": "npm@11.13.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
