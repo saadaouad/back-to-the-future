@@ -1,11 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import {
-  type CatalogFilm,
-  buildCartBreakdown,
-  calculatePrice,
-  parseCart
-} from '../../src/utils/pricing';
+import { type CatalogFilm, buildCartBreakdown, calculatePrice, parseCart } from '@/utils/pricing';
 
 const catalog: CatalogFilm[] = [
   { title: 'Back to the Future 1', price: 15, isSaga: true },

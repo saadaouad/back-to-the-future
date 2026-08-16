@@ -4,8 +4,10 @@ import { fileURLToPath } from 'node:url';
 import { sql } from 'drizzle-orm';
 
 import '../env';
-import { db, pool } from '../src/db/connection';
+import { DatabaseService } from '../src/db/database.service';
 import { films } from '../src/db/schema';
+
+const database = new DatabaseService();
 
 // Vitest loads this file as ESM; Nest tsc uses CommonJS and can't typecheck import.meta.
 const apiRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../');
@@ -14,7 +16,7 @@ export default async function setup() {
   console.log('Setting up the test db');
 
   try {
-    await db.execute(sql`DROP TABLE IF EXISTS ${films} CASCADE`);
+    await database.db.execute(sql`DROP TABLE IF EXISTS ${films} CASCADE`);
 
     execSync('npx drizzle-kit push --force', {
       stdio: 'inherit',
@@ -30,8 +32,8 @@ export default async function setup() {
 
   return async () => {
     try {
-      await db.execute(sql`DROP TABLE IF EXISTS ${films} CASCADE`);
-      await pool.end();
+      await database.db.execute(sql`DROP TABLE IF EXISTS ${films} CASCADE`);
+      await database.onModuleDestroy();
     } catch (error) {
       console.error('Fail to teardown test db', error);
       throw error;

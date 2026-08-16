@@ -7,7 +7,6 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
 
 import { AppModule } from '@/app.module';
 import { DatabaseService } from '@/db/database.service';
-
 import { cleanupDatabase, seedFilms } from '../helpers/dbHelpers';
 
 describe('POST /api/cart/calculate', () => {
