@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
+import { Button, Textarea } from '@/components';
 import { useMutation } from '@/hooks/useMutation';
 import type { CalculateCartResponse } from '@repo/schema-validation';
 
